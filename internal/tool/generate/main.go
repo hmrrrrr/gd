@@ -720,7 +720,7 @@ func generate() error {
 		}
 		if class.Name != "Object" {
 			if singletons[class.Name] {
-				fmt.Fprintf(classdb, "func %v(godot Context) %[2]v { obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.%[1]v); return *(*%[2]v)(unsafe.Pointer(&obj)) }\n",
+				fmt.Fprintf(classdb, "func %v(class gd.ExtensionClass) %[2]v { godot := class.Pin(); obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.%[1]v); return *(*%[2]v)(unsafe.Pointer(&obj)) }\n",
 					class.Name, classDB.nameOf("gd", class.Name))
 			} else {
 				if class.Description != "" {

@@ -37,14 +37,27 @@ func registerMethods(godot Context, class StringName, rtype reflect.Type) {
 			// FIXME type check and return an error if arguments are invalid.
 			Call: func(godot gd.Context, instance any, v ...gd.Variant) (gd.Variant, error) {
 				var args = make([]reflect.Value, len(v)+1)
-				args[0] = reflect.ValueOf(godot)
-				for i := 0; i < len(v); i++ {
-					if method.Type.In(i + 2).Implements(reflect.TypeOf([0]gd.IsClass{}).Elem()) {
-						var obj = reflect.New(method.Type.In(i + 2))
-						obj.Interface().(gd.PointerToClass).SetPointer(gd.LetVariantAsPointerType[gd.Pointer](godot, v[i], TypeObject))
-						args[i+1] = obj.Elem()
-					} else {
-						args[i+1] = reflect.ValueOf(v[i].Interface(godot))
+				if method.Type.In(1) == reflect.TypeOf(Context{}) {
+					args[0] = reflect.ValueOf(godot)
+					for i := 0; i < len(v); i++ {
+						if method.Type.In(i + 2).Implements(reflect.TypeOf([0]gd.IsClass{}).Elem()) {
+							var obj = reflect.New(method.Type.In(i + 2))
+							obj.Interface().(gd.PointerToClass).SetPointer(gd.LetVariantAsPointerType[gd.Pointer](godot, v[i], TypeObject))
+							args[i+1] = obj.Elem()
+						} else {
+							args[i+1] = reflect.ValueOf(v[i].Interface(godot))
+						}
+					}
+				} else {
+					args = args[:len(v)]
+					for i := 0; i < len(v); i++ {
+						if method.Type.In(i + 1).Implements(reflect.TypeOf([0]gd.IsClass{}).Elem()) {
+							var obj = reflect.New(method.Type.In(i + 2))
+							obj.Interface().(gd.PointerToClass).SetPointer(gd.LetVariantAsPointerType[gd.Pointer](godot, v[i], TypeObject))
+							args[i] = obj.Elem()
+						} else {
+							args[i] = reflect.ValueOf(v[i].Interface(godot))
+						}
 					}
 				}
 				rets := reflect.ValueOf(instance.(*instanceImplementation).Value).Method(i).Call(args)
@@ -70,8 +83,12 @@ func slowCall(godot *gd.API, method reflect.Value, p_args gd.UnsafeArgs, p_ret g
 	var (
 		args = make([]reflect.Value, method.Type().NumIn())
 	)
-	args[0] = reflect.ValueOf(ctx)
-	for i := 1; i < method.Type().NumIn(); i++ {
+	var offset = 0
+	if method.Type().In(0) == reflect.TypeOf(Context{}) {
+		args[0] = reflect.ValueOf(ctx)
+		offset = 1
+	}
+	for i := offset; i < method.Type().NumIn(); i++ {
 		switch method.Type().In(i) {
 		case reflect.TypeOf(Bool(false)):
 			args[i] = reflect.ValueOf(gd.UnsafeGet[Bool](p_args, i-1))

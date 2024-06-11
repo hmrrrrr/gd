@@ -35,6 +35,10 @@ func NewContext(api *API) Context {
 	return newContext(api)
 }
 
+func (godot Context) Pin() Context {
+	return godot
+}
+
 func newContext(api *API) Context {
 	var ctx Context
 	ctx.Lifetime = mmm.NewLifetime(api)

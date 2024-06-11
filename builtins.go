@@ -42,8 +42,8 @@ func Const[F func(T) T, T any](constant F) T {
 
 // As attempts to cast the given class to T, returning true
 // if the cast was successful.
-func As[T gd.IsClass](godot Context, class gd.IsClass) (T, bool) {
-	return gd.As[T](godot, class)
+func As[T gd.IsClass](scope gd.ExtensionClass, class gd.IsClass) (T, bool) {
+	return gd.As[T](scope, class)
 }
 
 type isResource interface {

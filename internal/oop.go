@@ -54,6 +54,13 @@ func (self Object) Free() { self.ptr.Free() }
 type Class[T, S IsClass] struct {
 	_     [0]*T
 	super S
+
+	KeepAlive Context
+	QueueFree Context
+}
+
+type ExtensionClass interface {
+	Pin() Context
 }
 
 func (class *Class[T, S]) SetPointer(ptr Pointer) {
@@ -70,10 +77,7 @@ func (class Class[T, S]) AsObject() Object {
 	return obj
 }
 
-// KeepAlive the class until the end of the specified context.
-func (class Class[T, S]) KeepAlive(lt mmm.Lifetime) {
-	mmm.Copy(class.super.AsPointer(), lt)
-}
+func (class Class[T, S]) API() Context { return class.Pin() }
 
 func (class Class[T, S]) Pin() Context {
 	return Context{
@@ -96,7 +100,9 @@ func VirtualByName(class IsClass, name string) reflect.Value {
 
 // As attempts to cast the given class to T, returning true
 // if the cast was successful.
-func As[T IsClass](godot Context, class IsClass) (T, bool) {
+func As[T IsClass](ex ExtensionClass, class IsClass) (T, bool) {
+	godot := ex.Pin()
+
 	if ref, ok := godot.API.Instances[mmm.Get(class.AsPointer())[0]].(T); ok {
 		return ref, true
 	}

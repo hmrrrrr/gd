@@ -836,7 +836,8 @@ Once added to the scene tree and enabled using [method make_current], this node 
 */
 type AudioListener3D = classdb.AudioListener3D
 
-func AudioServer(godot Context) classdb.AudioServer {
+func AudioServer(class gd.ExtensionClass) classdb.AudioServer {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.AudioServer)
 	return *(*classdb.AudioServer)(unsafe.Pointer(&obj))
 }
@@ -1256,7 +1257,8 @@ A camera feed gives you access to a single physical camera attached to your devi
 */
 type CameraFeed = classdb.CameraFeed
 
-func CameraServer(godot Context) classdb.CameraServer {
+func CameraServer(class gd.ExtensionClass) classdb.CameraServer {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.CameraServer)
 	return *(*classdb.CameraServer)(unsafe.Pointer(&obj))
 }
@@ -1388,7 +1390,8 @@ A 2D circle shape, intended for use in physics. Usually used to provide a shape 
 */
 type CircleShape2D = classdb.CircleShape2D
 
-func ClassDB(godot Context) classdb.ClassDB {
+func ClassDB(class gd.ExtensionClass) classdb.ClassDB {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.ClassDB)
 	return *(*classdb.ClassDB)(unsafe.Pointer(&obj))
 }
@@ -2265,7 +2268,8 @@ A directional light is a type of [Light3D] node that models an infinite number o
 */
 type DirectionalLight3D = classdb.DirectionalLight3D
 
-func DisplayServer(godot Context) classdb.DisplayServer {
+func DisplayServer(class gd.ExtensionClass) classdb.DisplayServer {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.DisplayServer)
 	return *(*classdb.DisplayServer)(unsafe.Pointer(&obj))
 }
@@ -2718,7 +2722,8 @@ To use [EditorInspectorPlugin], register it using the [method EditorPlugin.add_i
 */
 type EditorInspectorPlugin = classdb.EditorInspectorPlugin
 
-func EditorInterface(godot Context) classdb.EditorInterface {
+func EditorInterface(class gd.ExtensionClass) classdb.EditorInterface {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.EditorInterface)
 	return *(*classdb.EditorInterface)(unsafe.Pointer(&obj))
 }
@@ -3639,11 +3644,13 @@ This class is used internally by the editor inspector and script debugger, but c
 */
 type EncodedObjectAsID = classdb.EncodedObjectAsID
 
-func Engine(godot Context) classdb.Engine {
+func Engine(class gd.ExtensionClass) classdb.Engine {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.Engine)
 	return *(*classdb.Engine)(unsafe.Pointer(&obj))
 }
-func EngineDebugger(godot Context) classdb.EngineDebugger {
+func EngineDebugger(class gd.ExtensionClass) classdb.EngineDebugger {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.EngineDebugger)
 	return *(*classdb.EngineDebugger)(unsafe.Pointer(&obj))
 }
@@ -3864,7 +3871,8 @@ fv.variation_opentype = { ts.name_to_tag("wght"): 900, ts.name_to_tag("custom_hg
 type FontVariation = classdb.FontVariation
 type GDExtension = classdb.GDExtension
 
-func GDExtensionManager(godot Context) classdb.GDExtensionManager {
+func GDExtensionManager(class gd.ExtensionClass) classdb.GDExtensionManager {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.GDExtensionManager)
 	return *(*classdb.GDExtensionManager)(unsafe.Pointer(&obj))
 }
@@ -4096,11 +4104,13 @@ The first 3 DOF represent the linear motion of the physics bodies and the last 3
 */
 type Generic6DOFJoint3D = classdb.Generic6DOFJoint3D
 
-func Geometry2D(godot Context) classdb.Geometry2D {
+func Geometry2D(class gd.ExtensionClass) classdb.Geometry2D {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.Geometry2D)
 	return *(*classdb.Geometry2D)(unsafe.Pointer(&obj))
 }
-func Geometry3D(godot Context) classdb.Geometry3D {
+func Geometry3D(class gd.ExtensionClass) classdb.Geometry3D {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.Geometry3D)
 	return *(*classdb.Geometry3D)(unsafe.Pointer(&obj))
 }
@@ -4544,7 +4554,8 @@ A physics joint that restricts the rotation of a 3D physics body around an axis 
 */
 type HingeJoint3D = classdb.HingeJoint3D
 
-func IP(godot Context) classdb.IP {
+func IP(class gd.ExtensionClass) classdb.IP {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.IP)
 	return *(*classdb.IP)(unsafe.Pointer(&obj))
 }
@@ -4642,7 +4653,8 @@ Unlike its runtime counterpart, [ImporterMesh] contains mesh data before various
 type ImporterMesh = classdb.ImporterMesh
 type ImporterMeshInstance3D = classdb.ImporterMeshInstance3D
 
-func Input(godot Context) classdb.Input {
+func Input(class gd.ExtensionClass) classdb.Input {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.Input)
 	return *(*classdb.Input)(unsafe.Pointer(&obj))
 }
@@ -4799,7 +4811,8 @@ Stores information about mouse, keyboard, and touch gesture input events. This i
 */
 type InputEventWithModifiers = classdb.InputEventWithModifiers
 
-func InputMap(godot Context) classdb.InputMap {
+func InputMap(class gd.ExtensionClass) classdb.InputMap {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.InputMap)
 	return *(*classdb.InputMap)(unsafe.Pointer(&obj))
 }
@@ -4874,11 +4887,13 @@ type JSON = classdb.JSON
 type JSONRPC = classdb.JSONRPC
 type JavaClass = classdb.JavaClass
 
-func JavaClassWrapper(godot Context) classdb.JavaClassWrapper {
+func JavaClassWrapper(class gd.ExtensionClass) classdb.JavaClassWrapper {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.JavaClassWrapper)
 	return *(*classdb.JavaClassWrapper)(unsafe.Pointer(&obj))
 }
-func JavaScriptBridge(godot Context) classdb.JavaScriptBridge {
+func JavaScriptBridge(class gd.ExtensionClass) classdb.JavaScriptBridge {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.JavaScriptBridge)
 	return *(*classdb.JavaScriptBridge)(unsafe.Pointer(&obj))
 }
@@ -5152,7 +5167,8 @@ Generic 3D position hint for editing. It's just like a plain [Node3D], but it di
 */
 type Marker3D = classdb.Marker3D
 
-func Marshalls(godot Context) classdb.Marshalls {
+func Marshalls(class gd.ExtensionClass) classdb.Marshalls {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.Marshalls)
 	return *(*classdb.Marshalls)(unsafe.Pointer(&obj))
 }
@@ -5618,7 +5634,8 @@ A navigation mesh is a collection of polygons that define which areas of an envi
 */
 type NavigationMesh = classdb.NavigationMesh
 
-func NavigationMeshGenerator(godot Context) classdb.NavigationMeshGenerator {
+func NavigationMeshGenerator(class gd.ExtensionClass) classdb.NavigationMeshGenerator {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.NavigationMeshGenerator)
 	return *(*classdb.NavigationMeshGenerator)(unsafe.Pointer(&obj))
 }
@@ -5732,11 +5749,13 @@ The cost of traveling distances inside this region can be controlled with the [m
 */
 type NavigationRegion3D = classdb.NavigationRegion3D
 
-func NavigationServer2D(godot Context) classdb.NavigationServer2D {
+func NavigationServer2D(class gd.ExtensionClass) classdb.NavigationServer2D {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.NavigationServer2D)
 	return *(*classdb.NavigationServer2D)(unsafe.Pointer(&obj))
 }
-func NavigationServer3D(godot Context) classdb.NavigationServer3D {
+func NavigationServer3D(class gd.ExtensionClass) classdb.NavigationServer3D {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.NavigationServer3D)
 	return *(*classdb.NavigationServer3D)(unsafe.Pointer(&obj))
 }
@@ -5884,7 +5903,8 @@ ORMMaterial3D's properties are inherited from [BaseMaterial3D]. Unlike [Standard
 */
 type ORMMaterial3D = classdb.ORMMaterial3D
 
-func OS(godot Context) classdb.OS {
+func OS(class gd.ExtensionClass) classdb.OS {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.OS)
 	return *(*classdb.OS)(unsafe.Pointer(&obj))
 }
@@ -6283,7 +6303,8 @@ It is useful for making other nodes follow a path, without coding the movement p
 */
 type PathFollow3D = classdb.PathFollow3D
 
-func Performance(godot Context) classdb.Performance {
+func Performance(class gd.ExtensionClass) classdb.Performance {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.Performance)
 	return *(*classdb.Performance)(unsafe.Pointer(&obj))
 }
@@ -6556,7 +6577,8 @@ By changing various properties of this object, such as the ray position, you can
 */
 type PhysicsRayQueryParameters3D = classdb.PhysicsRayQueryParameters3D
 
-func PhysicsServer2D(godot Context) classdb.PhysicsServer2D {
+func PhysicsServer2D(class gd.ExtensionClass) classdb.PhysicsServer2D {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.PhysicsServer2D)
 	return *(*classdb.PhysicsServer2D)(unsafe.Pointer(&obj))
 }
@@ -6867,11 +6889,13 @@ Intended for use with GDExtension to create custom implementations of [PhysicsSe
 */
 type PhysicsServer2DExtension = classdb.PhysicsServer2DExtension
 
-func PhysicsServer2DManager(godot Context) classdb.PhysicsServer2DManager {
+func PhysicsServer2DManager(class gd.ExtensionClass) classdb.PhysicsServer2DManager {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.PhysicsServer2DManager)
 	return *(*classdb.PhysicsServer2DManager)(unsafe.Pointer(&obj))
 }
-func PhysicsServer3D(godot Context) classdb.PhysicsServer3D {
+func PhysicsServer3D(class gd.ExtensionClass) classdb.PhysicsServer3D {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.PhysicsServer3D)
 	return *(*classdb.PhysicsServer3D)(unsafe.Pointer(&obj))
 }
@@ -7074,7 +7098,8 @@ Intended for use with GDExtension to create custom implementations of [PhysicsSe
 */
 type PhysicsServer3DExtension = classdb.PhysicsServer3DExtension
 
-func PhysicsServer3DManager(godot Context) classdb.PhysicsServer3DManager {
+func PhysicsServer3DManager(class gd.ExtensionClass) classdb.PhysicsServer3DManager {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.PhysicsServer3DManager)
 	return *(*classdb.PhysicsServer3DManager)(unsafe.Pointer(&obj))
 }
@@ -7269,7 +7294,8 @@ A control used for visual representation of a percentage. Shows fill percentage 
 */
 type ProgressBar = classdb.ProgressBar
 
-func ProjectSettings(godot Context) classdb.ProjectSettings {
+func ProjectSettings(class gd.ExtensionClass) classdb.ProjectSettings {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.ProjectSettings)
 	return *(*classdb.ProjectSettings)(unsafe.Pointer(&obj))
 }
@@ -7618,7 +7644,8 @@ On startup, Godot creates a global [RenderingDevice] which can be retrieved usin
 */
 type RenderingDevice = classdb.RenderingDevice
 
-func RenderingServer(godot Context) classdb.RenderingServer {
+func RenderingServer(class gd.ExtensionClass) classdb.RenderingServer {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.RenderingServer)
 	return *(*classdb.RenderingServer)(unsafe.Pointer(&obj))
 }
@@ -7804,7 +7831,8 @@ WAV is an uncompressed format, which can provide higher quality compared to Ogg 
 */
 type ResourceImporterWAV = classdb.ResourceImporterWAV
 
-func ResourceLoader(godot Context) classdb.ResourceLoader {
+func ResourceLoader(class gd.ExtensionClass) classdb.ResourceLoader {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.ResourceLoader)
 	return *(*classdb.ResourceLoader)(unsafe.Pointer(&obj))
 }
@@ -7815,11 +7843,13 @@ GDScript has a simplified [method @GDScript.preload] built-in method which can b
 */
 type ResourcePreloader = classdb.ResourcePreloader
 
-func ResourceSaver(godot Context) classdb.ResourceSaver {
+func ResourceSaver(class gd.ExtensionClass) classdb.ResourceSaver {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.ResourceSaver)
 	return *(*classdb.ResourceSaver)(unsafe.Pointer(&obj))
 }
-func ResourceUID(godot Context) classdb.ResourceUID {
+func ResourceUID(class gd.ExtensionClass) classdb.ResourceUID {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.ResourceUID)
 	return *(*classdb.ResourceUID)(unsafe.Pointer(&obj))
 }
@@ -8805,7 +8835,8 @@ External [TextServer] implementations should inherit from this class.
 */
 type TextServerExtension = classdb.TextServerExtension
 
-func TextServerManager(godot Context) classdb.TextServerManager {
+func TextServerManager(class gd.ExtensionClass) classdb.TextServerManager {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.TextServerManager)
 	return *(*classdb.TextServerManager)(unsafe.Pointer(&obj))
 }
@@ -8955,7 +8986,8 @@ Use [member Control.theme] of any control node to set up a theme that will be av
 */
 type Theme = classdb.Theme
 
-func ThemeDB(godot Context) classdb.ThemeDB {
+func ThemeDB(class gd.ExtensionClass) classdb.ThemeDB {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.ThemeDB)
 	return *(*classdb.ThemeDB)(unsafe.Pointer(&obj))
 }
@@ -9035,7 +9067,8 @@ You can iterate over all tiles exposed by a TileSetSource by first iterating ove
 */
 type TileSetSource = classdb.TileSetSource
 
-func Time(godot Context) classdb.Time {
+func Time(class gd.ExtensionClass) classdb.Time {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.Time)
 	return *(*classdb.Time)(unsafe.Pointer(&obj))
 }
@@ -9072,7 +9105,8 @@ type TouchScreenButton = classdb.TouchScreenButton
 */
 type Translation = classdb.Translation
 
-func TranslationServer(godot Context) classdb.TranslationServer {
+func TranslationServer(class gd.ExtensionClass) classdb.TranslationServer {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.TranslationServer)
 	return *(*classdb.TranslationServer)(unsafe.Pointer(&obj))
 }
@@ -10509,7 +10543,8 @@ At runtime, [Window]s will not close automatically when requested. You need to h
 */
 type Window = classdb.Window
 
-func WorkerThreadPool(godot Context) classdb.WorkerThreadPool {
+func WorkerThreadPool(class gd.ExtensionClass) classdb.WorkerThreadPool {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.WorkerThreadPool)
 	return *(*classdb.WorkerThreadPool)(unsafe.Pointer(&obj))
 }
@@ -10711,7 +10746,8 @@ The [XRController3D] and [XRAnchor3D] both consume objects of this type and shou
 */
 type XRPositionalTracker = classdb.XRPositionalTracker
 
-func XRServer(godot Context) classdb.XRServer {
+func XRServer(class gd.ExtensionClass) classdb.XRServer {
+	godot := class.Pin()
 	obj := godot.API.Object.GetSingleton(godot, godot.API.Singletons.XRServer)
 	return *(*classdb.XRServer)(unsafe.Pointer(&obj))
 }
